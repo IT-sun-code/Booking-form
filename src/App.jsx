@@ -1,5 +1,7 @@
+import HomePage from "./components/homePage/homePage";
+
 function App() {
-  return <h1>FORMS</h1>;
+  return <HomePage />;
 }
 
 export default App;

@@ -1,0 +1,18 @@
+.button {
+  font-size: 24px;
+  font-weight: 400;
+  padding: 20px 48px;
+  border-radius: 40px;
+}
+
+.buttonCtv {
+  background-color: #557eff;
+  color: white;
+  border: 4px solid #557eff;
+}
+
+.buttonCtv:hover {
+  background-color: white;
+  color: #557eff;
+  opacity: 1;
+}

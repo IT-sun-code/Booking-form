@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;900&display=swap");
+
+/* Remove default margin and padding */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+img,
+i,
+form,
+label,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+/* Added a font to the entire document */
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #3d4f88;
+  user-select: none;
+}
+
+/* Added default margin and padding for ordered list*/
+ol {
+  margin: 0;
+  padding: 0 0 0 48px;
+}
+
+/* Remove default hyperlink styling */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove default button, input, select, textarea styling */
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+/* Added styles for hovering over the button */
+button:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+/* Added styles for headlines */
+h1 {
+  font-weight: 900;
+  font-size: 64px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+h3,
+summary {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+h1,
+h2,
+h3,
+summary {
+  color: #557eff;
+}

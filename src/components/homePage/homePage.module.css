@@ -1,0 +1,47 @@
+.container {
+  margin: 32px 120px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo {
+  color: #fec7ff;
+  text-decoration: underline;
+  margin-bottom: 112px;
+}
+
+.heading {
+  max-width: 608px;
+  margin-bottom: 112px;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  padding-bottom: 20px;
+  width: fit-content;
+}
+
+summary:before {
+  content: url("../../../public/icons/plus.svg");
+  margin-right: 10px;
+  color: #fec7ff;
+}
+
+details {
+  margin-bottom: 32px;
+}
+
+details[open] summary:before {
+  content: url("../../../public/icons/minus.svg");
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+.bubble {
+  margin-left: -100px;
+  height: 800px;
+  z-index: -1;
+}
