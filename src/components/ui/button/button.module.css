@@ -28,3 +28,12 @@
   color: white;
   border: 2px solid #557eff;
 }
+
+.closeButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 24px;
+  color: #557eff;
+  border: none;
+}

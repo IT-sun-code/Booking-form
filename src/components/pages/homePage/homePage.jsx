@@ -1,7 +1,8 @@
-import BookingForm from "../../ui/bookingForm";
 import Button from "../../ui/button";
 import styles from "./homePage.module.css";
 import { useState } from "react";
+import useModal from "../../../common/hooks/useModal";
+import Modal from "../../ui/modal";
 
 const rules = [
   "Нажмите на кнопку Забронировать",
@@ -18,6 +19,8 @@ import minusIcon from "/icons/minus.svg";
 
 const HomePage = () => {
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const { modalVariety, handleModalOpen, handleModalClose, modalOpen } =
+    useModal();
 
   const toggleDetails = () => {
     setDetailsOpen(!detailsOpen);
@@ -53,8 +56,9 @@ const HomePage = () => {
               <ol>{instruction}</ol>
             </details>
           </div>
-          <Button appearance="ctv">Забронировать</Button>
-          <BookingForm />
+          <Button appearance="ctv" onClick={() => handleModalOpen("booking")}>
+            Забронировать
+          </Button>
         </div>
 
         <div>
@@ -65,6 +69,14 @@ const HomePage = () => {
           />
         </div>
       </div>
+
+      {modalOpen && (
+        <Modal
+          variety={modalVariety}
+          isOpen={modalOpen}
+          onClose={handleModalClose}
+        />
+      )}
     </>
   );
 };

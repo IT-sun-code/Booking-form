@@ -1,15 +1,18 @@
 .form {
+  position: relative;
   min-width: 640px;
+  max-height: 80vh;
   width: 100%;
-  padding: 32px;
+  padding: 48px;
   border: 4px solid #fec7ff;
-  border-radius: 30px;
+  border-radius: 50px;
+  background-color: white;
 }
 
 .position {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .line {

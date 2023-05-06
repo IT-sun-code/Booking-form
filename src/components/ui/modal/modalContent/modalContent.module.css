@@ -1,0 +1,46 @@
+.warning {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.bookingDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 2px solid #fec7ff;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.cell {
+  flex: 1;
+  padding: 8px;
+}
+
+.footer {
+  padding: 16px;
+  border-bottom: 2px solid #fec7ff;
+}
