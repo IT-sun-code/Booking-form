@@ -20,20 +20,11 @@ summary {
   list-style: none;
   padding-bottom: 20px;
   width: fit-content;
-}
-
-summary:before {
-  content: url("../../../public/icons/plus.svg");
-  margin-right: 10px;
-  color: #fec7ff;
+  outline: none;
 }
 
 details {
   margin-bottom: 32px;
-}
-
-details[open] summary:before {
-  content: url("../../../public/icons/minus.svg");
 }
 
 li {

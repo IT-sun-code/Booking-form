@@ -16,3 +16,15 @@
   color: #557eff;
   opacity: 1;
 }
+
+.buttonReset {
+  background-color: white;
+  color: #557eff;
+  border: 2px solid #557eff;
+}
+
+.buttonSubmit {
+  background-color: #557eff;
+  color: white;
+  border: 2px solid #557eff;
+}

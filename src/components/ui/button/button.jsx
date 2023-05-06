@@ -2,15 +2,16 @@ import styles from "./button.module.css";
 import cn from "classnames";
 import PropTypes from "prop-types";
 
-const Button = ({ children, appearance }) => {
+const Button = ({ children, appearance, type }) => {
   return (
     <button
+      type={type}
       className={cn(
         styles.button,
         {
           [styles.buttonCtv]: appearance === "ctv",
-          [styles.buttonCtvBlueOrder]: appearance === "ctvBlueOrder",
-          [styles.buttonCtvBlack]: appearance === "ctvBlack",
+          [styles.buttonReset]: appearance === "reset",
+          [styles.buttonSubmit]: appearance === "submit",
         },
         []
       )}
@@ -21,7 +22,9 @@ const Button = ({ children, appearance }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.string,
-  appearance: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  appearance: PropTypes.oneOf(["ctv", "reset", "submit"]),
+  type: PropTypes.oneOf(["reset", "submit"]),
 };
+
 export default Button;
