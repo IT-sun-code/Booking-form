@@ -4,6 +4,10 @@ import styles from "./modalContent.module.css";
 import PropTypes from "prop-types";
 
 export const SuccessModalContent = ({ onClose }) => {
+  const formDataString = localStorage.getItem("formData");
+  const formData = JSON.parse(formDataString);
+  const { tower, floor, room, date, timeRange, comment } = formData;
+
   return (
     <>
       <h2>Ваш заказ успешно оформлен!</h2>
@@ -15,29 +19,33 @@ export const SuccessModalContent = ({ onClose }) => {
         <div className={styles.body}>
           <div className={styles.row}>
             <div className={styles.cell}>Башня</div>
-            <div className={styles.cell}>-</div>
+            <div className={styles.cell}>{tower}</div>
           </div>
           <div className={styles.row}>
             <div className={styles.cell}>Этаж</div>
-            <div className={styles.cell}>-</div>
+            <div className={styles.cell}>{floor}</div>
           </div>
           <div className={styles.row}>
             <div className={styles.cell}>Переговорка</div>
-            <div className={styles.cell}>-</div>
+            <div className={styles.cell}>{room}</div>
           </div>
           <div className={styles.row}>
             <div className={styles.cell}>Дата</div>
-            <div className={styles.cell}>-</div>
+            <div className={styles.cell}>{date}</div>
           </div>
           <div className={styles.row}>
-            <div className={styles.cell}>Время</div>
-            <div className={styles.cell}>-</div>
+            <div className={styles.cell}>Период времени</div>
+            <div
+              className={styles.cell}
+            >{`${timeRange[0]} / ${timeRange[1]}`}</div>
           </div>
         </div>
         <div className={styles.footer}>
           <div className={styles.row}>
             <div className={styles.cell}>Комментарий</div>
-            <div className={styles.cell}>Принесем хорошее настроение!</div>
+            <div className={styles.cell}>
+              {comment ? comment : "Принесем хорошее настроение!"}
+            </div>
           </div>
         </div>
       </div>

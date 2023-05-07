@@ -12,7 +12,9 @@ export const useFromData = () => {
   const [formData, setFormData] = useState(initialFormData);
 
   const handleFormFinish = () => {
-    console.log(JSON.stringify(formData));
+    const formDataString = JSON.stringify(formData);
+    localStorage.setItem("formData", formDataString);
+    console.log(formDataString);
   };
 
   const disabledDate = (current) => {
