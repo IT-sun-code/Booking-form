@@ -1,6 +1,7 @@
 .form {
   position: relative;
   min-width: 640px;
+  /* min-width: 30vh; */
   max-height: 80vh;
   width: 100%;
   padding: 48px;
@@ -12,16 +13,12 @@
 .position {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
-}
-
-.line {
-  height: 2px;
-  width: 100%;
-  margin: 10px 0 20px 0;
-  background-color: #fec7ff;
+  align-items: center;
 }
 
 .heading {
   text-align: center;
+  padding: 16px;
+  border-bottom: 2px solid #fec7ff;
+  margin-bottom: 32px;
 }
