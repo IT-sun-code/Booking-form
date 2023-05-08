@@ -1,9 +1,8 @@
-import BookingForm from "../../bookingForm";
-import Button from "../../button";
-import styles from "./modalContent.module.css";
+import styles from "./successModalContent.module.css";
 import PropTypes from "prop-types";
+import Button from "../../../button";
 
-export const SuccessModalContent = ({ onClose }) => {
+const SuccessModalContent = ({ onClose }) => {
   const formDataString = localStorage.getItem("formData");
   const formData = JSON.parse(formDataString);
   const { tower, floor, room, date, timeRange, comment } = formData;
@@ -35,9 +34,9 @@ export const SuccessModalContent = ({ onClose }) => {
           </div>
           <div className={styles.row}>
             <div className={styles.cell}>Период времени</div>
-            <div
-              className={styles.cell}
-            >{`${timeRange[0]} / ${timeRange[1]}`}</div>
+            <div className={styles.cell}>
+              {`${timeRange[0]} / ${timeRange[1]}`}
+            </div>
           </div>
         </div>
         <div className={styles.footer}>
@@ -50,7 +49,12 @@ export const SuccessModalContent = ({ onClose }) => {
         </div>
       </div>
 
-      <Button appearance="ctv" onClick={onClose}>
+      <Button
+        appearance="ctv"
+        onClick={() => {
+          onClose(), localStorage.clear();
+        }}
+      >
         Спасибо
       </Button>
 
@@ -66,15 +70,4 @@ SuccessModalContent.propTypes = {
   onClose: PropTypes.func,
 };
 
-export const OrderModalContent = ({ onConfirm, onClose }) => {
-  return (
-    <>
-      <BookingForm onConfirm={onConfirm} onClose={onClose} />
-    </>
-  );
-};
-
-OrderModalContent.propTypes = {
-  onConfirm: PropTypes.func,
-  onClose: PropTypes.func,
-};
+export default SuccessModalContent;

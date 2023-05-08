@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { dateFormat, timeFormat } from "../constants/formats/formats";
-import { initialFormData } from "../constants/initialFormData/initialFormData";
-import {
-  today,
-  currentDate,
-  currentHour,
-  currentMinute,
-} from "../constants/formattedData/formattedData";
+import { dateFormat, timeFormat } from "../constants/formats";
+import { initialFormData } from "../constants/initialFormData";
+import { currentDate, currentHour } from "../constants/formattedData";
 
 export const useFromData = () => {
   const [formData, setFormData] = useState(initialFormData);
@@ -17,33 +12,34 @@ export const useFromData = () => {
     console.log(formDataString);
   };
 
-  const disabledDate = (current) => {
-    return current < today;
-  };
-
-  const handleDateChange = (value, type) => {
-    const valueData = value.format(dateFormat);
-    setFormData((prevState) => ({ ...prevState, [type]: valueData }));
-  };
-
   const handleSelectChange = (value, type) => {
     value && setFormData((prevState) => ({ ...prevState, [type]: value }));
   };
 
+  const disabledDate = (current) => {
+    return current < currentDate;
+  };
+
+  const handleDateChange = (value, type) => {
+    if (value) {
+      const valueData = value.format(dateFormat);
+      setFormData((prevState) => ({ ...prevState, [type]: valueData }));
+    }
+  };
+
   const disabledRange = (current) => {
     const disabledHours = [];
-    let disabledMinutes = [];
+    const disabledMinutes = [...Array(60).keys()].filter(
+      (minute) => minute !== 0 && minute % 15 !== 0
+    );
 
     if (current.$d.toDateString() === currentDate.toDateString()) {
-      for (let i = 0; i < currentHour; i++) {
+      const range = currentHour + 1;
+      for (let i = 0; i < range; i++) {
         disabledHours.push(i);
       }
-      if (current.$H === currentHour) {
-        for (let i = 0; i < currentMinute; i++) {
-          disabledMinutes.push(i);
-        }
-      }
     }
+
     return {
       disabledHours: () => disabledHours,
       disabledMinutes: () => disabledMinutes,
@@ -51,13 +47,15 @@ export const useFromData = () => {
   };
 
   const handleRangeChange = (value, type) => {
-    const formattedValues = value.map((val) => val.format(timeFormat));
-    setFormData((prevState) => ({ ...prevState, [type]: formattedValues }));
+    if (value) {
+      const formattedValues = value.map((val) => val.format(timeFormat));
+      setFormData((prevState) => ({ ...prevState, [type]: formattedValues }));
+    }
   };
 
   return {
-    handleSelectChange,
     handleFormFinish,
+    handleSelectChange,
     disabledDate,
     handleDateChange,
     disabledRange,

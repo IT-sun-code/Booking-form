@@ -1,6 +1,6 @@
 export const initialFormData = {
   tower: "",
-  floor: 3,
+  floor: "",
   room: "",
   date: "",
   timeRange: [],

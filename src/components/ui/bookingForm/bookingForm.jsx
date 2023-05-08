@@ -1,9 +1,9 @@
-import { Select, Form, Space, DatePicker, TimePicker, Input } from "antd";
-import Button from "../button";
 import styles from "./bookingForm.module.css";
-import { timeFormat } from "../../../common/constants/formats/formats";
 import PropTypes from "prop-types";
 import { useFromData } from "../../../common/hooks/useForm";
+import { Select, Form, Space, DatePicker, TimePicker, Input } from "antd";
+import Button from "../button";
+import { timeFormat } from "../../../common/constants/formats";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -43,16 +43,13 @@ const BookingForm = ({ onConfirm, onClose }) => {
   return (
     <div>
       <Form
+        layout={"vertical"}
+        className={styles.form}
         name="booking"
-        initialValues={{
-          remember: true,
-        }}
+        validateMessages={validateMessages}
         onFinish={() => {
           onConfirm(), handleFormFinish();
         }}
-        validateMessages={validateMessages}
-        layout={"vertical"}
-        className={styles.form}
       >
         <Button appearance="cross" onClick={onClose}>
           {<div>&times;</div>}
@@ -103,11 +100,23 @@ const BookingForm = ({ onConfirm, onClose }) => {
           <Form.Item
             label="Период времени"
             name="timeRange"
-            rules={[{ required: true }]}
+            rules={[
+              {
+                required: true,
+                validator: (_, value) => {
+                  if (value && value[0].isSame(value[1], "minute")) {
+                    return Promise.reject(
+                      "Время начала и окончания не должны совпадать"
+                    );
+                  }
+                  return Promise.resolve();
+                },
+              },
+            ]}
           >
             <TimePicker.RangePicker
-              format={timeFormat}
               style={{ width: "256px" }}
+              format={timeFormat}
               disabledTime={(current) => disabledRange(current)}
               onChange={(value) => handleRangeChange(value, "timeRange")}
             />

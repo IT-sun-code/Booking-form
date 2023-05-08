@@ -4,16 +4,6 @@ const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVariety, setModalVariety] = useState("");
 
-  // const handleModalOpen = (variety) => {
-  //   setModalVariety(variety);
-  //   setModalOpen(true);
-  // };
-
-  // const handleModalClose = () => {
-  //   setModalOpen(false);
-  //   console.log("закрыто");
-  // };
-
   const handleModalOpen = useCallback((variety) => {
     setModalVariety(variety);
     setModalOpen(true);
@@ -21,7 +11,6 @@ const useModal = () => {
 
   const handleModalClose = useCallback(() => {
     setModalOpen(false);
-    console.log("закрыто");
   }, []);
 
   useEffect(() => {

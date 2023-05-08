@@ -1,21 +1,13 @@
-import Button from "../../ui/button";
 import styles from "./homePage.module.css";
 import { useState } from "react";
 import useModal from "../../../common/hooks/useModal";
 import Modal from "../../ui/modal";
-
-const rules = [
-  "Нажмите на кнопку Забронировать",
-  "Выберете башню",
-  "Выберете этаж",
-  "Выберете переговорную",
-  "Выберете дату и интервал времени",
-  "Введите комментарий",
-  "Наслаждайтесь!",
-];
-const instruction = rules.map((rule, index) => <li key={index}>{rule}</li>);
+import Button from "../../ui/button";
+import { rules } from "../../../common/constants/rules";
 import plusIcon from "/icons/plus.svg";
 import minusIcon from "/icons/minus.svg";
+
+const instruction = rules.map((rule, index) => <li key={index}>{rule}</li>);
 
 const HomePage = () => {
   const [detailsOpen, setDetailsOpen] = useState(false);
