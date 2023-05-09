@@ -22,7 +22,6 @@ const Modal = ({ variety, isOpen, onClose, bookingData }) => {
   const [content, setContent] = useState(
     variety === "booking" && (
       <OrderModalContent
-        onClose={onClose}
         onConfirm={() => {
           setContent(
             <SuccessModalContent bookingData={bookingData} onClose={onClose} />
@@ -32,18 +31,17 @@ const Modal = ({ variety, isOpen, onClose, bookingData }) => {
     )
   );
 
-  const modalClassName =
-    content.type !== OrderModalContent ? isOpen && styles.modalOpen : "";
-
   return (
     <Portal>
       <div className={isOpen ? styles.overlayOpen : ""} onClick={onClose}>
-        <div className={modalClassName} onClick={(e) => e.stopPropagation()}>
-          {content.type !== OrderModalContent && (
-            <Button appearance="cross" onClick={onClose}>
-              {<div>&times;</div>}
-            </Button>
-          )}
+        <div
+          className={isOpen && styles.modalOpen}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Button appearance="cross" onClick={onClose}>
+            {<div>&times;</div>}
+          </Button>
+
           <div
             className={`${styles.containerContent}
             ${content.type !== OrderModalContent ? styles.content : ""}`}

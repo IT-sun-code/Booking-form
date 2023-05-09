@@ -6,6 +6,7 @@ import Button from "../../ui/button";
 import { rules } from "../../../common/constants/rules";
 import plusIcon from "/icons/plus.svg";
 import minusIcon from "/icons/minus.svg";
+import bubbleImage from "/images/bubble.png";
 
 const instruction = rules.map((rule, index) => <li key={index}>{rule}</li>);
 
@@ -54,11 +55,7 @@ const HomePage = () => {
         </div>
 
         <div>
-          <img
-            className={styles.bubble}
-            src="/images/bubble.png"
-            alt="bubble"
-          />
+          <img className={styles.bubble} src={bubbleImage} alt="bubble" />
         </div>
       </div>
 

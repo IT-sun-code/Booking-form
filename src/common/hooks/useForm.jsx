@@ -17,7 +17,15 @@ export const useFromData = () => {
   };
 
   const disabledDate = (current) => {
-    return current < currentDate;
+    if (currentHour + 1 > 23) {
+      return (
+        current < currentDate ||
+        (current.$D === currentDate.getDate() &&
+          current.$M === currentDate.getMonth())
+      );
+    } else {
+      return current < currentDate;
+    }
   };
 
   const handleDateChange = (value, type) => {
@@ -34,7 +42,7 @@ export const useFromData = () => {
     );
 
     if (current.$d.toDateString() === currentDate.toDateString()) {
-      const range = currentHour + 1;
+      const range = currentHour + 1 > 23 ? 1 : currentHour + 1;
       for (let i = 0; i < range; i++) {
         disabledHours.push(i);
       }
@@ -47,6 +55,7 @@ export const useFromData = () => {
   };
 
   const handleRangeChange = (value, type) => {
+    console.log(currentDate + 1);
     if (value) {
       const formattedValues = value.map((val) => val.format(timeFormat));
       setFormData((prevState) => ({ ...prevState, [type]: formattedValues }));

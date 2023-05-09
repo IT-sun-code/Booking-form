@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import BookingForm from "../../../bookingForm";
 
-const OrderModalContent = ({ onConfirm, onClose }) => {
+const OrderModalContent = ({ onConfirm }) => {
   return (
     <>
-      <BookingForm onConfirm={onConfirm} onClose={onClose} />
+      <BookingForm onConfirm={onConfirm} />
     </>
   );
 };

@@ -4,15 +4,16 @@ import { useFromData } from "../../../common/hooks/useForm";
 import { Select, Form, Space, DatePicker, TimePicker, Input } from "antd";
 import Button from "../button";
 import { timeFormat } from "../../../common/constants/formats";
+import { currentHour } from "../../../common/constants/formattedData";
 
 const { Option } = Select;
 const { TextArea } = Input;
 
 const validateMessages = {
-  required: "${label} обязательное поле",
+  required: "'${label}' обязательное поле",
 };
 
-const BookingForm = ({ onConfirm, onClose }) => {
+const BookingForm = ({ onConfirm }) => {
   const {
     handleFormFinish,
     handleSelectChange,
@@ -51,16 +52,12 @@ const BookingForm = ({ onConfirm, onClose }) => {
           onConfirm(), handleFormFinish();
         }}
       >
-        <Button appearance="cross" onClick={onClose}>
-          {<div>&times;</div>}
-        </Button>
-
         <h3 className={styles.heading}>Форма бронирования переговорной</h3>
 
         <Space className={styles.position} size={24}>
           <Form.Item label="Башня" name="tower" rules={[{ required: true }]}>
             <Select
-              style={{ width: "164px" }}
+              style={{ width: 164 }}
               onChange={(value) => handleSelectChange(value, "tower")}
             >
               <Option value="A">A</Option>
@@ -69,7 +66,7 @@ const BookingForm = ({ onConfirm, onClose }) => {
           </Form.Item>
           <Form.Item label="Этаж" name="floor" rules={[{ required: true }]}>
             <Select
-              style={{ width: "164px" }}
+              style={{ width: 164 }}
               onChange={(value) => handleSelectChange(value, "floor")}
             >
               {floorOptions}
@@ -81,7 +78,7 @@ const BookingForm = ({ onConfirm, onClose }) => {
             rules={[{ required: true }]}
           >
             <Select
-              style={{ width: "164px" }}
+              style={{ width: 164 }}
               onChange={(value) => handleSelectChange(value, "room")}
             >
               {roomOptions}
@@ -92,22 +89,34 @@ const BookingForm = ({ onConfirm, onClose }) => {
         <Space className={styles.position} size={24}>
           <Form.Item label="Дата" name="date" rules={[{ required: true }]}>
             <DatePicker
-              style={{ width: "256px" }}
+              size={"large"}
+              style={{ width: 256 }}
+              placeholder="Выберете дату"
               disabledDate={disabledDate}
               onChange={(value) => handleDateChange(value, "date")}
             />
           </Form.Item>
+
           <Form.Item
             label="Период времени"
             name="timeRange"
             rules={[
+              { required: true },
               {
-                required: true,
                 validator: (_, value) => {
-                  if (value && value[0].isSame(value[1], "minute")) {
-                    return Promise.reject(
-                      "Время начала и окончания не должны совпадать"
-                    );
+                  if (value) {
+                    const [start, end] = value;
+                    const selectedStartHour = start.hour();
+                    if (value && start.isSame(end, "minute")) {
+                      return Promise.reject(
+                        "Время начала и окончания не должны совпадать"
+                      );
+                    }
+                    if (start && selectedStartHour < currentHour) {
+                      return Promise.reject(
+                        "Выбранный час начала не может быть меньше текущего часа"
+                      );
+                    }
                   }
                   return Promise.resolve();
                 },
@@ -115,8 +124,10 @@ const BookingForm = ({ onConfirm, onClose }) => {
             ]}
           >
             <TimePicker.RangePicker
-              style={{ width: "256px" }}
+              size={"large"}
+              style={{ width: 256 }}
               format={timeFormat}
+              placeholder={["Начало", "Конец"]}
               disabledTime={(current) => disabledRange(current)}
               onChange={(value) => handleRangeChange(value, "timeRange")}
             />
@@ -125,7 +136,9 @@ const BookingForm = ({ onConfirm, onClose }) => {
 
         <Form.Item label="Комментарий" name="comment">
           <TextArea
-            style={{ maxHeight: "164px" }}
+            size="large"
+            style={{ maxHeight: 112 }}
+            placeholder={`Нужен принтер,\nканцелярия...`}
             onChange={(value) =>
               handleSelectChange(value.currentTarget.value, "comment")
             }
@@ -133,12 +146,17 @@ const BookingForm = ({ onConfirm, onClose }) => {
         </Form.Item>
 
         <Space className={styles.position}>
-          <Button type={"reset"} appearance="reset">
-            Очистить
-          </Button>
-          <Button htmlType="submit" appearance="submit">
-            Отправить
-          </Button>
+          <Form.Item>
+            <Button type={"reset"} appearance="reset">
+              Очистить
+            </Button>
+          </Form.Item>
+
+          <Form.Item>
+            <Button htmlType="submit" appearance="submit">
+              Отправить
+            </Button>
+          </Form.Item>
         </Space>
       </Form>
     </div>
