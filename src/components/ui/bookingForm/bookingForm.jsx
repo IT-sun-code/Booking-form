@@ -1,10 +1,15 @@
 import styles from "./bookingForm.module.css";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useFromData } from "../../../common/hooks/useForm";
 import { Select, Form, Space, DatePicker, TimePicker, Input } from "antd";
 import Button from "../button";
 import { timeFormat } from "../../../common/constants/formats";
-import { currentHour } from "../../../common/constants/formattedData";
+import {
+  currentDate,
+  currentHour,
+  currentMinute,
+} from "../../../common/constants/formattedData";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -14,6 +19,8 @@ const validateMessages = {
 };
 
 const BookingForm = ({ onConfirm }) => {
+  const [date, setDate] = useState("");
+
   const {
     handleFormFinish,
     handleSelectChange,
@@ -93,7 +100,9 @@ const BookingForm = ({ onConfirm }) => {
               style={{ width: 256 }}
               placeholder="Выберете дату"
               disabledDate={disabledDate}
-              onChange={(value) => handleDateChange(value, "date")}
+              onChange={(value) => {
+                handleDateChange(value, "date"), setDate(value.date());
+              }}
             />
           </Form.Item>
 
@@ -107,16 +116,29 @@ const BookingForm = ({ onConfirm }) => {
                   if (value) {
                     const [start, end] = value;
                     const selectedStartHour = start.hour();
+                    const selectedStartMinute = start.minute();
+                    const selectedEndHour = end.hour();
+
                     if (value && start.isSame(end, "minute")) {
                       return Promise.reject(
                         "Время начала и окончания не должны совпадать"
                       );
                     }
-                    if (start && selectedStartHour < currentHour) {
-                      return Promise.reject(
-                        "Выбранный час начала не может быть меньше текущего часа"
-                      );
+
+                    if (date === currentDate.getDate()) {
+                      if (
+                        (selectedStartHour < currentHour &&
+                          selectedEndHour < currentHour) ||
+                        selectedStartHour < currentHour ||
+                        (selectedStartHour === currentHour &&
+                          selectedStartMinute < currentMinute)
+                      ) {
+                        return Promise.reject(
+                          "Время должно быть больше текущего"
+                        );
+                      }
                     }
+                    return Promise.resolve();
                   }
                   return Promise.resolve();
                 },
@@ -128,7 +150,8 @@ const BookingForm = ({ onConfirm }) => {
               style={{ width: 256 }}
               format={timeFormat}
               placeholder={["Начало", "Конец"]}
-              disabledTime={(current) => disabledRange(current)}
+              showTime={{ hideDisabledOptions: true }}
+              disabledTime={disabledRange}
               onChange={(value) => handleRangeChange(value, "timeRange")}
             />
           </Form.Item>

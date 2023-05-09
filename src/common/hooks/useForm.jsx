@@ -20,8 +20,8 @@ export const useFromData = () => {
     if (currentHour + 1 > 23) {
       return (
         current < currentDate ||
-        (current.$D === currentDate.getDate() &&
-          current.$M === currentDate.getMonth())
+        (current.date() === currentDate.getDate() &&
+          current.month() === currentDate.getMonth())
       );
     } else {
       return current < currentDate;
@@ -35,21 +35,11 @@ export const useFromData = () => {
     }
   };
 
-  const disabledRange = (current) => {
-    const disabledHours = [];
+  const disabledRange = () => {
     const disabledMinutes = [...Array(60).keys()].filter(
       (minute) => minute !== 0 && minute % 15 !== 0
     );
-
-    if (current.$d.toDateString() === currentDate.toDateString()) {
-      const range = currentHour + 1 > 23 ? 1 : currentHour + 1;
-      for (let i = 0; i < range; i++) {
-        disabledHours.push(i);
-      }
-    }
-
     return {
-      disabledHours: () => disabledHours,
       disabledMinutes: () => disabledMinutes,
     };
   };
