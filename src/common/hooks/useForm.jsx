@@ -45,7 +45,6 @@ export const useFromData = () => {
   };
 
   const handleRangeChange = (value, type) => {
-    console.log(currentDate + 1);
     if (value) {
       const formattedValues = value.map((val) => val.format(timeFormat));
       setFormData((prevState) => ({ ...prevState, [type]: formattedValues }));

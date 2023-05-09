@@ -34,5 +34,58 @@ li {
 .bubble {
   margin-left: -100px;
   height: 800px;
-  z-index: -1;
+}
+
+@media screen and (max-width: 499px) {
+  .bubble {
+    height: 100px;
+  }
+  .heading {
+    max-width: 280px;
+  }
+  .heading1 {
+    font-size: 32px;
+  }
+  .heading2 {
+    font-size: 24px;
+  }
+  .heading3 {
+    font-size: 18px;
+  }
+  .rules {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .bubble {
+    height: 180px;
+  }
+  .heading1 {
+    font-size: 48px;
+  }
+  .heading2 {
+    font-size: 32px;
+  }
+  .heading3 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+  .bubble {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+  .bubble {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1279px) {
+  .bubble {
+    height: 500px;
+  }
 }

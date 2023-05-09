@@ -61,10 +61,10 @@ const BookingForm = ({ onConfirm }) => {
       >
         <h3 className={styles.heading}>Форма бронирования переговорной</h3>
 
-        <Space className={styles.position} size={24}>
+        <Space className={styles.position}>
           <Form.Item label="Башня" name="tower" rules={[{ required: true }]}>
             <Select
-              style={{ width: 164 }}
+              style={{ width: 152 }}
               onChange={(value) => handleSelectChange(value, "tower")}
             >
               <Option value="A">A</Option>
@@ -73,7 +73,7 @@ const BookingForm = ({ onConfirm }) => {
           </Form.Item>
           <Form.Item label="Этаж" name="floor" rules={[{ required: true }]}>
             <Select
-              style={{ width: 164 }}
+              style={{ width: 152 }}
               onChange={(value) => handleSelectChange(value, "floor")}
             >
               {floorOptions}
@@ -85,7 +85,7 @@ const BookingForm = ({ onConfirm }) => {
             rules={[{ required: true }]}
           >
             <Select
-              style={{ width: 164 }}
+              style={{ width: 152 }}
               onChange={(value) => handleSelectChange(value, "room")}
             >
               {roomOptions}
@@ -93,11 +93,11 @@ const BookingForm = ({ onConfirm }) => {
           </Form.Item>
         </Space>
 
-        <Space className={styles.position} size={24}>
+        <Space className={styles.position}>
           <Form.Item label="Дата" name="date" rules={[{ required: true }]}>
             <DatePicker
               size={"large"}
-              style={{ width: 256 }}
+              style={{ width: 240 }}
               placeholder="Выберете дату"
               disabledDate={disabledDate}
               onChange={(value) => {
@@ -147,7 +147,7 @@ const BookingForm = ({ onConfirm }) => {
           >
             <TimePicker.RangePicker
               size={"large"}
-              style={{ width: 256 }}
+              style={{ width: 240 }}
               format={timeFormat}
               placeholder={["Начало", "Конец"]}
               showTime={{ hideDisabledOptions: true }}

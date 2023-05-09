@@ -23,7 +23,7 @@ const HomePage = () => {
     <>
       <div className={styles.container}>
         <div>
-          <h3 className={styles.logo}>
+          <h3 className={`${styles.logo} ${styles.heading3}`}>
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -34,12 +34,14 @@ const HomePage = () => {
           </h3>
 
           <div className={styles.heading}>
-            <h1>ДОБРО ПОЖАЛОВАТЬ!</h1>
-            <h2>Хотите забронировать переговорную?</h2>
+            <h1 className={styles.heading1}>ДОБРО ПОЖАЛОВАТЬ!</h1>
+            <h2 className={styles.heading2}>
+              Хотите забронировать переговорную?
+            </h2>
           </div>
           <div>
-            <details>
-              <summary onClick={toggleDetails}>
+            <details className={styles.rules}>
+              <summary className={styles.heading3} onClick={toggleDetails}>
                 <img
                   src={detailsOpen ? minusIcon : plusIcon}
                   alt={detailsOpen ? "minus" : "plus"}

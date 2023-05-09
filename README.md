@@ -2,7 +2,7 @@
 
 Разработанная для ВКонтакте форма бронирования переговорной по приложенному ТЗ.
 
-<!-- Результат: https://it-sun-code.github.io/Booking-form/ -->
+Результат: https://it-sun-code.github.io/Booking-form/
 
 ## Техническое задание
 

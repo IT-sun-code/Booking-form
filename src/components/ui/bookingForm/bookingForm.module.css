@@ -14,3 +14,15 @@
   border-bottom: 2px solid #fec7ff;
   margin-bottom: 32px;
 }
+
+@media screen and (max-width: 299px) {
+  .heading {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .position {
+    flex-direction: column;
+  }
+}
