@@ -4,6 +4,8 @@
 
 Результат: https://it-sun-code.github.io/Booking-form/
 
+Код варианта с TypeScript: https://github.com/IT-sun-code/Booking-form-typescript.git
+
 ## Техническое задание
 
 <details>
