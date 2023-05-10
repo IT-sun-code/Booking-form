@@ -79,6 +79,10 @@
 
 </details>
 
+## Предварительный просмотр
+
+![preview](./public/images/preview.jpg)
+
 ## Обоснование решения
 
 <details>
