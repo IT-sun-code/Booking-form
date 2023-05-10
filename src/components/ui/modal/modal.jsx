@@ -6,7 +6,7 @@ import OrderModalContent from "./modalContent/orderModalContent";
 import SuccessModalContent from "./modalContent/successModalContent";
 import Button from "../button";
 
-const Modal = ({ variety, isOpen, onClose, bookingData }) => {
+const Modal = ({ variety, isOpen, onClose }) => {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
@@ -23,9 +23,7 @@ const Modal = ({ variety, isOpen, onClose, bookingData }) => {
     variety === "booking" && (
       <OrderModalContent
         onConfirm={() => {
-          setContent(
-            <SuccessModalContent bookingData={bookingData} onClose={onClose} />
-          );
+          setContent(<SuccessModalContent onClose={onClose} />);
         }}
       />
     )
@@ -44,7 +42,7 @@ const Modal = ({ variety, isOpen, onClose, bookingData }) => {
 
           <div
             className={`${styles.containerContent}
-            ${content.type !== OrderModalContent ? styles.content : ""}`}
+            ${content.type.name !== "OrderModalContent" ? styles.content : ""}`}
           >
             {content}
           </div>
@@ -58,7 +56,6 @@ Modal.propTypes = {
   variety: PropTypes.string,
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
-  bookingData: PropTypes.object,
 };
 
 export default Modal;

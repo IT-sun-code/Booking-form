@@ -40,9 +40,7 @@ const SuccessModalContent = ({ onClose }) => {
         <div className={styles.footer}>
           <div className={`${styles.row} ${styles.comment}`}>
             <div className={styles.cell}>Комментарий</div>
-            <div className={styles.cell}>
-              {comment ? comment : "Принесем хорошее настроение!"}
-            </div>
+            <div className={styles.cell}>{comment}</div>
           </div>
         </div>
       </div>
@@ -64,7 +62,6 @@ const SuccessModalContent = ({ onClose }) => {
 };
 
 SuccessModalContent.propTypes = {
-  bookingData: PropTypes.object,
   onClose: PropTypes.func,
 };
 

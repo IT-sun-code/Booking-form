@@ -1,8 +1,8 @@
 export const initialFormData = {
   tower: "",
-  floor: "",
-  room: "",
+  floor: 3,
+  room: 1,
   date: "",
-  timeRange: [],
-  comment: "",
+  timeRange: ["", ""],
+  comment: "Принесем хорошее настроение!",
 };

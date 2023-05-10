@@ -11,7 +11,6 @@ const OrderModalContent = ({ onConfirm }) => {
 
 OrderModalContent.propTypes = {
   onConfirm: PropTypes.func,
-  onClose: PropTypes.func,
 };
 
 export default OrderModalContent;

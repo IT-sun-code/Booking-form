@@ -19,7 +19,7 @@ const validateMessages = {
 };
 
 const BookingForm = ({ onConfirm }) => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(0);
 
   const {
     handleFormFinish,
@@ -133,7 +133,7 @@ const BookingForm = ({ onConfirm }) => {
                           selectedStartMinute < currentMinute)
                       ) {
                         return Promise.reject(
-                          "время должно быть больше текущего"
+                          "Время должно быть больше текущего"
                         );
                       }
                     }
@@ -149,7 +149,7 @@ const BookingForm = ({ onConfirm }) => {
               style={{ width: 240 }}
               format={timeFormat}
               placeholder={["Начало", "Конец"]}
-              showTime={{ hideDisabledOptions: true }}
+              hideDisabledOptions
               disabledTime={disabledRange}
               onChange={(value) => handleRangeChange(value, "timeRange")}
             />
@@ -186,7 +186,7 @@ const BookingForm = ({ onConfirm }) => {
 };
 
 BookingForm.propTypes = {
-  onConfirm: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func,
 };
 
 export default BookingForm;
