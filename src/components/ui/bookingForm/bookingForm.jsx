@@ -52,7 +52,6 @@ const BookingForm = ({ onConfirm }) => {
     <div>
       <Form
         layout={"vertical"}
-        className={styles.form}
         name="booking"
         validateMessages={validateMessages}
         onFinish={() => {
@@ -134,7 +133,7 @@ const BookingForm = ({ onConfirm }) => {
                           selectedStartMinute < currentMinute)
                       ) {
                         return Promise.reject(
-                          "Время должно быть больше текущего"
+                          "время должно быть больше текущего"
                         );
                       }
                     }
@@ -187,8 +186,7 @@ const BookingForm = ({ onConfirm }) => {
 };
 
 BookingForm.propTypes = {
-  onConfirm: PropTypes.func,
-  onClose: PropTypes.func,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default BookingForm;

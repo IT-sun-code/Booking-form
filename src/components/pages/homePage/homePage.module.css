@@ -1,3 +1,4 @@
+/* Styles for content */
 .container {
   margin: 32px 120px;
   display: flex;
@@ -36,6 +37,7 @@ li {
   height: 800px;
 }
 
+/* Styles for responsiveness */
 @media screen and (max-width: 499px) {
   .bubble {
     height: 100px;

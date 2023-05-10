@@ -9,12 +9,10 @@ const SuccessModalContent = ({ onClose }) => {
 
   return (
     <>
-      <h2>Ваш заказ успешно оформлен!</h2>
+      <h2 className={styles.header2}>Ваш заказ успешно оформлен!</h2>
 
       <div className={styles.bookingDetails}>
-        <div className={styles.header}>
-          <h3>Детали брони</h3>
-        </div>
+        <h3 className={styles.header3}>Детали брони</h3>
         <div className={styles.body}>
           <div className={styles.row}>
             <div className={styles.cell}>Башня</div>
@@ -40,7 +38,7 @@ const SuccessModalContent = ({ onClose }) => {
           </div>
         </div>
         <div className={styles.footer}>
-          <div className={styles.row}>
+          <div className={`${styles.row} ${styles.comment}`}>
             <div className={styles.cell}>Комментарий</div>
             <div className={styles.cell}>
               {comment ? comment : "Принесем хорошее настроение!"}

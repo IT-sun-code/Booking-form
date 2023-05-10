@@ -1,3 +1,4 @@
+/* Styles for content */
 .bookingDetails {
   display: flex;
   flex-direction: column;
@@ -5,14 +6,9 @@
   margin-bottom: 48px;
 }
 
-.header {
+.header3 {
   padding: 16px;
   border-bottom: 2px solid #fec7ff;
-}
-
-.header h2 {
-  margin: 0;
-  font-size: 24px;
 }
 
 .body {
@@ -27,6 +23,10 @@
   flex-direction: row;
   align-items: center;
   padding: 8px 0;
+}
+
+.comment {
+  flex-direction: column;
 }
 
 .cell {
@@ -45,7 +45,17 @@
   font-weight: 900;
 }
 
-@media screen and (max-width: 600px) {
+/* Styles for responsiveness */
+@media screen and (max-width: 370px) {
+  .header2 {
+    font-size: 24px;
+  }
+  .header3 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 599px) {
   .row {
     flex-direction: column;
   }

@@ -4,16 +4,11 @@
 html,
 body,
 div,
-span,
 h1,
 h2,
 h3,
-h4,
-p,
 a,
 img,
-i,
-form,
 label,
 button {
   margin: 0;
@@ -23,7 +18,7 @@ button {
   font: inherit;
 }
 
-/* Added a font to the entire document */
+/* Add a font to the entire document */
 body {
   font-family: "Raleway", sans-serif;
   font-size: 18px;
@@ -31,7 +26,7 @@ body {
   user-select: none;
 }
 
-/* Added default margin and padding for ordered list*/
+/* Add default margin and padding for ordered list*/
 ol {
   margin: 0;
   padding: 0 0 0 48px;
@@ -56,13 +51,13 @@ textarea {
   outline: none;
 }
 
-/* Added styles for hovering over the button */
+/* Add styles for hovering over the button */
 button:hover {
   cursor: pointer;
   opacity: 50%;
 }
 
-/* Added styles for headlines */
+/* Add styles for headlines */
 h1 {
   font-weight: 900;
   font-size: 64px;

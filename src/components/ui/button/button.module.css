@@ -1,3 +1,4 @@
+/* Styles for content */
 .button {
   font-size: 24px;
   font-weight: 400;
@@ -36,4 +37,19 @@
   font-size: 24px;
   color: #557eff;
   border: none;
+}
+
+/* Styles for responsiveness */
+@media screen and (max-width: 299px) {
+  .button {
+    font-size: 16px;
+    padding: 20px 30px;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 399px) {
+  .button {
+    font-size: 16px;
+    padding: 20px 40px;
+  }
 }
